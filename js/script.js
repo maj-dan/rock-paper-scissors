@@ -12,7 +12,19 @@
     //if player score is greater than 0, output message "Player win!"
     //if player score is lesser than 0, output message "Computer win!"
     //if it's 0, output message "It's a tie!"
-
+    function playGame() {
+        let playerScore = 0;
+        for (let i = 0; i < 5; i++){
+            playerScore += playRound(getPlayerChoice(), getComputerChoice());
+        }
+        if (playerScore > 0) {
+            console.log("Player win!");
+        } else if (playerScore < 0) {
+            console.log("Computer win!");
+        } else {
+            console.log("It's a tie!");
+        }
+    }
 
 
 function getComputerChoice() {
