@@ -24,3 +24,36 @@ function getComputerChoice() {
             return "Scissors";
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toUpperCase();
+    computerSelection = computerSelection.toUpperCase();
+    if (playerSelection === "ROCK") {
+        switch (computerSelection) {
+            case "ROCK":
+                return "Rock = Rock, Tie!";
+            case "PAPER":
+                return "Rock < Paper, Computer +1!";
+            case "SCISSORS":
+                return "Rock > Scissors, Player +1!";
+        }
+    } else if (playerSelection === "PAPER") {
+        switch (computerSelection) {
+            case "ROCK":
+                return "Paper > Rock, Player +1!";
+            case "PAPER":
+                return "Paper = Paper, Tie!";
+            case "SCISSORS":
+                return "Paper < Scissors, Computer +1!";
+        }
+    } else if (playerSelection === "SCISSORS") {
+        switch (computerSelection) {
+            case "ROCK":
+                return "Scissors < Rock, Computer +1!";
+            case "PAPER":
+                return "Scissors > Paper, Player +1!";
+            case "SCISSORS":
+                return "Scissors = Scissors, Tie!";
+        }
+    }
+}
