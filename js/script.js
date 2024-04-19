@@ -1,4 +1,4 @@
-//Create player score and computer score
+//Create player score
 //Run 5 rounds of the game
     //Ask player for an choice (rock, paper or scissors)
     //if player choice is valid, store it, else ask for choice again
@@ -6,12 +6,14 @@
     //Store computer choice
     //Compare player and computer choice
         //if player win, output message "Player +1!" and add 1 to player score
-        //if computer win, output message "Computer +1!" add 1 to computer score
+        //if computer win, output message "Computer +1!" dec 1 to player score
         //if it's a tie, output message "Tie!"
 //Compare player score and computer score
-    //if player score is greater, output message "Player win!"
-    //if computer score is greater, output message "Computer win!"
-    //if it's equal, output message "It's a tie!"
+    //if player score is greater than 0, output message "Player win!"
+    //if player score is lesser than 0, output message "Computer win!"
+    //if it's 0, output message "It's a tie!"
+
+
 
 function getComputerChoice() {
     const selector = Math.floor(Math.random() * 3) + 1;
@@ -31,29 +33,46 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === "ROCK") {
         switch (computerSelection) {
             case "ROCK":
-                return "Rock = Rock, Tie!";
+                console.log("Rock = Rock, Tie!");
+                return 0;
             case "PAPER":
-                return "Rock < Paper, Computer +1!";
+                console.log("Rock < Paper, Computer +1!");
+                return -1;
             case "SCISSORS":
-                return "Rock > Scissors, Player +1!";
+                console.log("Rock > Scissors, Player +1!");
+                return 1;
         }
     } else if (playerSelection === "PAPER") {
         switch (computerSelection) {
             case "ROCK":
-                return "Paper > Rock, Player +1!";
+                console.log("Paper > Rock, Player +1!");
+                return 1;
             case "PAPER":
-                return "Paper = Paper, Tie!";
+                console.log("Paper = Paper, Tie!");
+                return 0;
             case "SCISSORS":
-                return "Paper < Scissors, Computer +1!";
+                console.log("Paper < Scissors, Computer +1!");
+                return -1;
         }
     } else if (playerSelection === "SCISSORS") {
         switch (computerSelection) {
             case "ROCK":
-                return "Scissors < Rock, Computer +1!";
+                console.log("Scissors < Rock, Computer +1!");
+                return -1;
             case "PAPER":
-                return "Scissors > Paper, Player +1!";
+                console.log("Scissors > Paper, Player +1!");
+                return 1;
             case "SCISSORS":
-                return "Scissors = Scissors, Tie!";
+                console.log("Scissors = Scissors, Tie!");
+                return 0;
         }
     }
+}
+
+function getPlayerChoice() {
+    let playerChoice;
+    do {
+        playerChoice = prompt("Enter Rock, Paper or Scissors:");
+    } while (playerChoice.toUpperCase()!== "ROCK" && playerChoice.toUpperCase()!== "PAPER" && playerChoice.toUpperCase()!== "SCISSORS");
+    return playerChoice;
 }
