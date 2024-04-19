@@ -12,3 +12,15 @@
     //if player score is greater, output message "Player win!"
     //if computer score is greater, output message "Computer win!"
     //if it's equal, output message "It's a tie!"
+
+function getComputerChoice() {
+    const selector = Math.floor(Math.random() * 3) + 1;
+    switch (selector) {
+        case 1:
+            return "Rock";
+        case 2:
+            return "Paper";
+        case 3:
+            return "Scissors";
+    }
+}
