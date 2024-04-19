@@ -1,32 +1,26 @@
-//Create player score
+
 //Run 5 rounds of the game
-    //Ask player for an choice (rock, paper or scissors)
-    //if player choice is valid, store it, else ask for choice again
-    //Get computer choice
-    //Store computer choice
-    //Compare player and computer choice
+function playGame() {
+    let playerScore = 0;
+    for (let i = 0; i < 5; i++){
         //if player win, output message "Player +1!" and add 1 to player score
         //if computer win, output message "Computer +1!" dec 1 to player score
         //if it's a tie, output message "Tie!"
-//Compare player score and computer score
+        playerScore += playRound(getPlayerChoice(), getComputerChoice());
+    }
     //if player score is greater than 0, output message "Player win!"
     //if player score is lesser than 0, output message "Computer win!"
     //if it's 0, output message "It's a tie!"
-    function playGame() {
-        let playerScore = 0;
-        for (let i = 0; i < 5; i++){
-            playerScore += playRound(getPlayerChoice(), getComputerChoice());
-        }
-        if (playerScore > 0) {
-            console.log("Player win!");
-        } else if (playerScore < 0) {
-            console.log("Computer win!");
-        } else {
-            console.log("It's a tie!");
-        }
+    if (playerScore > 0) {
+        console.log("Player win!");
+    } else if (playerScore < 0) {
+        console.log("Computer win!");
+    } else {
+        console.log("It's a tie!");
     }
+}
 
-
+//Get computer choice
 function getComputerChoice() {
     const selector = Math.floor(Math.random() * 3) + 1;
     switch (selector) {
@@ -39,6 +33,8 @@ function getComputerChoice() {
     }
 }
 
+
+//Compare player and computer choice
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
@@ -81,6 +77,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//Ask player for an choice (rock, paper or scissors)
+//if player choice is valid, store it, else ask for choice again
 function getPlayerChoice() {
     let playerChoice;
     do {
