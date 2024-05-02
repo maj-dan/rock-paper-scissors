@@ -7,19 +7,19 @@ function getComputerChoice() {
     const selector = Math.floor(Math.random() * 3) + 1;
     switch (selector) {
         case 1:
-            return "Rock";
+            return "ROCK";
         case 2:
-            return "Paper";
+            return "PAPER";
         case 3:
-            return "Scissors";
+            return "SCISSORS";
     }
 }
 
 
 //Compare player and computer choice
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toUpperCase();
-    computerSelection = computerSelection.toUpperCase();
+function playRound(event) {
+    computerSelection = getComputerChoice();
+    playerSelection = event.target.textContent.toUpperCase();
     if (playerSelection === "ROCK") {
         switch (computerSelection) {
             case "ROCK":
