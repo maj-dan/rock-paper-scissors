@@ -19,6 +19,8 @@ function getComputerChoice() {
 
 function playRound(event) {
     computerSelection = getComputerChoice();
+    //get the selection with the button that player clicked
+    //compare all choices in upper case
     playerSelection = event.target.textContent.toUpperCase();
     if (playerSelection === "ROCK") {
         switch (computerSelection) {
@@ -65,6 +67,18 @@ function playRound(event) {
                 updateScore(0);
                 break;
         }
+    }
+    //end the game and reset the score
+    if (parseInt(playerScore.textContent) >= 5 && 
+        parseInt(computerScore.textContent) < 5){
+        display.textContent = "Player won, Congratulations!";
+        playerScore.textContent = "0";
+        computerScore.textContent = "0";
+    } else if (parseInt(playerScore.textContent) < 5 && 
+        parseInt(computerScore.textContent) >= 5){
+        display.textContent = "Oh no, machines are comming for us!"
+        playerScore.textContent = "0";
+        computerScore.textContent = "0";
     }
 }
 
