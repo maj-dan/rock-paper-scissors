@@ -1,7 +1,11 @@
 const btns = document.querySelectorAll("button");
 const display = document.querySelector("div#display");
-const playerScore = document.querySelector("#player-score");
-const computerScore = document.querySelector("#computer-score");
+const score = document.querySelector("#score");
+
+//stored player and computer score in variables so it's possible
+//to still show the score of 5 when the game reset
+let playerScore = 0;
+let computerScore = 0;
 
 btns.forEach((btn) => btn.addEventListener("click", playRound));
 
@@ -69,23 +73,22 @@ function playRound(event) {
         }
     }
     //end the game and reset the score
-    if (parseInt(playerScore.textContent) >= 5 && 
-        parseInt(computerScore.textContent) < 5){
+    if (playerScore >= 5 && computerScore < 5){
         display.textContent = "Player won, Congratulations!";
-        playerScore.textContent = "0";
-        computerScore.textContent = "0";
-    } else if (parseInt(playerScore.textContent) < 5 && 
-        parseInt(computerScore.textContent) >= 5){
+        playerScore = 0;
+        computerScore = 0;
+    } else if (playerScore < 5 && computerScore >= 5){
         display.textContent = "Oh no, machines are comming for us!"
-        playerScore.textContent = "0";
-        computerScore.textContent = "0";
+        playerScore = 0;
+        computerScore = 0;
     }
 }
 
 function updateScore(roundResult) {
     if (roundResult > 0){
-        playerScore.textContent = parseInt(playerScore.textContent) + 1;
+        playerScore += 1;
     }else if (roundResult < 0){
-        computerScore.textContent = parseInt(computerScore.textContent) + 1;
+        computerScore += 1;
     }
+    score.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
 }
